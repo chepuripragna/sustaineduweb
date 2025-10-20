@@ -1,0 +1,28 @@
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.footer-sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section p, .footer-section a {
+  color: white;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  font-size: 14px;
+}

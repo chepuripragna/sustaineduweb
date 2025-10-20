@@ -1,0 +1,67 @@
+/* Universal page container */
+.page-container {
+  max-width: 1200px; /* limits content width */
+  margin: 0 auto;    /* center horizontally */
+  padding: 40px 20px; /* top/bottom & side spacing */
+  box-sizing: border-box;
+}
+
+/* Headings */
+h2, h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Forms */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea, button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Centering cards or lists */
+.lessons-list, .projects-list, .resources-list, .testimonial-cards, .admin-stats, .stats-container, .hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Paragraphs */
+p {
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Toggle link in Registration */
+.toggle-link {
+  color: #21055a;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Responsive images in hero and cards */
+img {
+  max-width: 100%;
+  height: auto;
+}

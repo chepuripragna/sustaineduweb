@@ -1,0 +1,31 @@
+.project-card {
+  background-color: #f9f9f6;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.project-card p {
+  margin: 0 0 10px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.join-btn {
+  background-color: #43A047;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.join-btn:hover {
+  background-color: #388E3C;
+}

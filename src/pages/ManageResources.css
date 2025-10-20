@@ -1,0 +1,97 @@
+.manage-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #43A047;
+}
+
+.resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.resource-item {
+  background-color: #f9f9f6;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resource-item h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.resource-item p {
+  font-size: 14px;
+  color: #555;
+}
+
+.resource-item a {
+  display: inline-block;
+  margin: 8px 0;
+  color: #43A047;
+  text-decoration: none;
+}
+
+.resource-actions {
+  margin-top: 10px;
+}
+
+.resource-actions button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #43A047;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: white;
+}
+
+.add-resource {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f6;
+  border-radius: 12px;
+}
+
+.add-resource h3 {
+  color: #43A047;
+  margin-bottom: 15px;
+}
+
+.add-resource form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add-resource input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-resource button {
+  width: 140px;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background-color: #43A047;
+  color: white;
+  cursor: pointer;
+}

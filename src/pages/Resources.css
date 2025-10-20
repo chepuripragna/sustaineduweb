@@ -1,0 +1,41 @@
+.resources-title {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 24px;
+  color: #43A047;
+}
+
+.resources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.resource-item {
+  background-color: #f9f9f6;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.resource-item h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.resource-item p {
+  font-size: 14px;
+  color: #555;
+}
+
+.resource-item a {
+  display: inline-block;
+  margin-top: 8px;
+  color: #43A047;
+  text-decoration: none;
+  font-weight: 500;
+}
