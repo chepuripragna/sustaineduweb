@@ -17,7 +17,8 @@
   margin-bottom: 10px;
 }
 
-.footer-section p, .footer-section a {
+.footer-section p,
+.footer-section a {
   color: white;
   text-decoration: none;
   line-height: 1.6;
@@ -25,4 +26,26 @@
 
 .footer-bottom {
   font-size: 14px;
+  margin-top: 15px;
+}
+
+/* === Feedback button styling === */
+.feedback-button-container {
+  margin: 10px 0 20px;
+}
+
+.feedback-button {
+  background-color: #4caf50; /* soft eco-green */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.feedback-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
 }

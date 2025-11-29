@@ -1,0 +1,88 @@
+.registration-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #f9f9f6;
+  padding: 20px;
+}
+
+.form-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 400px;
+}
+
+.form-card h2 {
+  color: #43A047;
+  margin-bottom: 1.5rem;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.radio-group label,
+.checkbox-group label {
+  margin-right: 15px;
+  font-size: 0.95rem;
+  display: inline-block;
+}
+
+.consent {
+  display: block;
+  margin: 10px 0;
+  font-size: 0.9rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #43A047;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-submit:hover {
+  background-color: #388E3C;
+}
+
+.error {
+  color: red;
+  font-size: 0.8rem;
+  margin: 0 0 5px 0;
+}
+
+.success {
+  color: green;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* Star rating */
+.star-rating {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin: 5px 0 10px 0;
+}
+
+.star {
+  cursor: pointer;
+}
+
+.star.selected {
+  color: #43A047;
+}

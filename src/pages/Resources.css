@@ -39,3 +39,18 @@
   text-decoration: none;
   font-weight: 500;
 }
+
+.course-btn {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background-color: #43A047;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.course-btn:hover {
+  background-color: #388E3C;
+}
