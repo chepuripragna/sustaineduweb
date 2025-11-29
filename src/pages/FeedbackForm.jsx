@@ -83,75 +83,96 @@ const FeedbackForm = () => {
     <>
       <Navbar />
 
-      <div className="registration-container">
-        <div className="form-card">
-          <h2>Student Course Feedback</h2>
+      <div className="page-container">
+        <h2 className="projects-title">Feedback</h2>
 
-          <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Student Name" value={form.name} onChange={(e) => handleChange("name", e.target.value)} />
-            {errors.name && <p className="error">{errors.name}</p>}
+        <div className="feedback-list">
+          <div className="feedback-card">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Student Name"
+                value={form.name}
+                onChange={(e) => handleChange("name", e.target.value)}
+              />
+              {errors.name && <p className="error">{errors.name}</p>}
 
-            <input type="email" placeholder="Email" value={form.email} onChange={(e) => handleChange("email", e.target.value)} />
-            {errors.email && <p className="error">{errors.email}</p>}
+              <input
+                type="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={(e) => handleChange("email", e.target.value)}
+              />
+              {errors.email && <p className="error">{errors.email}</p>}
 
-            <select value={form.course} onChange={(e) => handleChange("course", e.target.value)}>
-              <option value="">Select Course</option>
-              {courses.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
-            {errors.course && <p className="error">{errors.course}</p>}
+              <select value={form.course} onChange={(e) => handleChange("course", e.target.value)}>
+                <option value="">Select Course</option>
+                {courses.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+              {errors.course && <p className="error">{errors.course}</p>}
 
-            <input type="text" placeholder="Instructor" value={form.instructor} onChange={(e) => handleChange("instructor", e.target.value)} />
-            {errors.instructor && <p className="error">{errors.instructor}</p>}
+              <input
+                type="text"
+                placeholder="Instructor"
+                value={form.instructor}
+                onChange={(e) => handleChange("instructor", e.target.value)}
+              />
+              {errors.instructor && <p className="error">{errors.instructor}</p>}
 
-            <p>Would you recommend this course?</p>
-            <div className="radio-group">
-              <label>
-                <input type="radio" value="Yes" checked={form.recommend === "Yes"} onChange={(e) => handleChange("recommend", e.target.value)} />
-                Yes
-              </label>
-              <label>
-                <input type="radio" value="No" checked={form.recommend === "No"} onChange={(e) => handleChange("recommend", e.target.value)} />
-                No
-              </label>
-            </div>
-            {errors.recommend && <p className="error">{errors.recommend}</p>}
-
-            <p>Overall Rating</p>
-            <div className="star-rating">
-              {[1, 2, 3, 4, 5].map(star => (
-                <span
-                  key={star}
-                  className={form.rating >= star ? "star selected" : "star"}
-                  onClick={() => handleStarClick(star)}
-                >
-                  &#9733;
-                </span>
-              ))}
-            </div>
-            {errors.rating && <p className="error">{errors.rating}</p>}
-
-            <p>What worked well?</p>
-            <div className="checkbox-group">
-              {optionsCheckbox.map(opt => (
-                <label key={opt}>
-                  <input type="checkbox" checked={form.workedWell.includes(opt)} onChange={() => handleChange("workedWell", opt)} />
-                  {opt}
+              <p>Would you recommend this course?</p>
+              <div className="radio-group">
+                <label>
+                  <input type="radio" value="Yes" checked={form.recommend === "Yes"} onChange={(e) => handleChange("recommend", e.target.value)} />
+                  Yes
                 </label>
-              ))}
-            </div>
+                <label>
+                  <input type="radio" value="No" checked={form.recommend === "No"} onChange={(e) => handleChange("recommend", e.target.value)} />
+                  No
+                </label>
+              </div>
+              {errors.recommend && <p className="error">{errors.recommend}</p>}
 
-            <textarea placeholder="Comments" value={form.comments} onChange={(e) => handleChange("comments", e.target.value)} />
-            {errors.comments && <p className="error">{errors.comments}</p>}
+              <p>Overall Rating</p>
+              <div className="star-rating">
+                {[1, 2, 3, 4, 5].map(star => (
+                  <span
+                    key={star}
+                    className={form.rating >= star ? "star selected" : "star"}
+                    onClick={() => handleStarClick(star)}
+                  >
+                    &#9733;
+                  </span>
+                ))}
+              </div>
+              {errors.rating && <p className="error">{errors.rating}</p>}
 
-            <label className="consent">
-              <input type="checkbox" checked={form.consent} onChange={() => handleChange("consent")} />
-              I agree to share this feedback with the instructor
-            </label>
-            {errors.consent && <p className="error">{errors.consent}</p>}
+              <p>What worked well?</p>
+              <div className="checkbox-group">
+                {optionsCheckbox.map(opt => (
+                  <label key={opt}>
+                    <input type="checkbox" checked={form.workedWell.includes(opt)} onChange={() => handleChange("workedWell", opt)} />
+                    {opt}
+                  </label>
+                ))}
+              </div>
 
-            <button type="submit" className="btn-submit">Submit</button>
-            {submitted && <p className="success">Feedback submitted successfully!</p>}
-          </form>
+              <textarea
+                placeholder="Comments"
+                value={form.comments}
+                onChange={(e) => handleChange("comments", e.target.value)}
+              />
+              {errors.comments && <p className="error">{errors.comments}</p>}
+
+              <label className="consent">
+                <input type="checkbox" checked={form.consent} onChange={() => handleChange("consent")} />
+                I agree to share this feedback with the instructor
+              </label>
+              {errors.consent && <p className="error">{errors.consent}</p>}
+
+              <button type="submit" className="btn-submit">Submit</button>
+              {submitted && <p className="success">Feedback submitted successfully!</p>}
+            </form>
+          </div>
         </div>
       </div>
 

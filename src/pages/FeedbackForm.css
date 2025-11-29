@@ -1,32 +1,25 @@
-.registration-container {
-  min-height: 80vh;
+.feedback-list {
+  max-width: 700px;
+  margin: 20px auto;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-card {
   background-color: #f9f9f6;
-  padding: 20px;
-}
-
-.form-card {
-  background-color: white;
-  padding: 2rem;
+  padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 400px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.form-card h2 {
-  color: #43A047;
-  margin-bottom: 1.5rem;
-}
-
-.form-card input,
-.form-card select,
-.form-card textarea {
+.feedback-card form input,
+.feedback-card form select,
+.feedback-card form textarea {
   width: 100%;
   padding: 0.7rem;
   margin: 0.5rem 0;
-  border-radius: 8px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
 }
@@ -50,7 +43,7 @@
   background-color: #43A047;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-top: 1rem;
   cursor: pointer;
   font-weight: bold;
