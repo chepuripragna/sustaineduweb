@@ -1,15 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import LessonCard from "../components/LessonCard";
 import "./Lessons.css";
 
 function Lessons() {
-  const lessons = [
-    { title: "Renewable Energy 101", description: "Learn basics of solar, wind, and hydro energy.", progress: 30 },
-    { title: "Waste Reduction Techniques", description: "Practical ways to reduce waste in daily life.", progress: 50 },
-    { title: "Eco-Friendly Lifestyle", description: "Small changes for a sustainable lifestyle.", progress: 10 },
+  const initialLessons = [
+    { 
+      title: "Renewable Energy 101", 
+      description: "Learn basics of solar, wind, and hydro energy."
+    },
+    { 
+      title: "Solar Energy Basics", 
+      description: "Understand how solar panels work and their benefits."
+    },
+    { 
+      title: "Waste Reduction Techniques", 
+      description: "Practical ways to reduce waste in daily life."
+    },
+    { 
+      title: "Eco-Friendly Lifestyle", 
+      description: "Small changes for a sustainable lifestyle."
+    },
+    {
+      title: "Water Conservation Techniques",
+      description: "Learn practical ways to save water in daily life."
+    },
   ];
+
+  const [lessons, setLessons] = useState([]);
+
+  useEffect(() => {
+    // Load progress from localStorage
+    const lessonsWithProgress = initialLessons.map((lesson) => {
+      const savedProgress = localStorage.getItem(`progress_${lesson.title}`);
+      return {
+        ...lesson,
+        progress: savedProgress ? parseInt(savedProgress) : 0,
+      };
+    });
+    setLessons(lessonsWithProgress);
+  }, []);
 
   return (
     <>

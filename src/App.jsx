@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-// Pages
 import FeedbackForm from "./pages/FeedbackForm";
 import Home from "./pages/Home";
-import Registration from "./pages/Registration"; // Registration page
+import Registration from "./pages/Registration";
 import Lessons from "./pages/Lessons";
 import Projects from "./pages/Projects";
 import Resources from "./pages/Resources";
@@ -14,6 +13,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import ManageLessons from "./pages/ManageLessons";
 import ManageProjects from "./pages/ManageProjects";
 import ManageResources from "./pages/ManageResources";
+import LessonDetails from "./pages/LessonDetails"; // ⬅ ADD THIS
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/lessons" element={<Lessons />} />
+        <Route path="/lessons/:id" element={<LessonDetails />} /> {/* ⬅ ADD THIS */}
         <Route path="/projects" element={<Projects />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/profile" element={<Profile />} />
