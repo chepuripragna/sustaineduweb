@@ -8,6 +8,8 @@ import Footer from "../components/Footer";
 
 function Home() {
   const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+
 
   const handleNavigate = (mode) => {
     navigate(`/register?mode=${mode}`);
@@ -18,10 +20,12 @@ function Home() {
       <Navbar />
 
       <div className="page-container">
-        <HeroSection 
-          onLogin={() => handleNavigate("login")} 
-          onSignup={() => handleNavigate("signup")} 
+        <HeroSection
+          onLogin={() => handleNavigate("login")}
+          onSignup={() => handleNavigate("signup")}
+          isLoggedIn={isLoggedIn}
         />
+        
         <PreviewCards />
         <Testimonials />
       </div>

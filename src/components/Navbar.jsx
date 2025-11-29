@@ -1,8 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 function Navbar() {
+  const isLoggedIn = localStorage.getItem("loggedIn") === "true"; // ← FIXED
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("loggedIn"); // ← match the same key
+    navigate("/");
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -18,8 +26,14 @@ function Navbar() {
       </ul>
 
       <div className="navbar-buttons">
-        <Link to="/register?mode=login" className="btn-login">Login</Link>
-        <Link to="/register?mode=signup" className="btn-signup">Sign Up</Link>
+        {!isLoggedIn ? (
+          <>
+            <Link to="/register?mode=login" className="btn-login">Login</Link>
+            <Link to="/register?mode=signup" className="btn-signup">Sign Up</Link>
+          </>
+        ) : (
+          <button onClick={handleLogout} className="btn-logout">Logout</button>
+        )}
       </div>
     </nav>
   );
