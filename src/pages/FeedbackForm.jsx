@@ -3,8 +3,10 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./FeedbackForm.css";
 
-const courses = ["DSA", "Operating Systems", "DBMS", "Frontend"];
-const optionsCheckbox = ["Lectures", "Labs", "Assignments", "Projects", "Others"];
+const courses = ["Renewable Energy", "Solar Energy Basics", "Waste Reduction Techniques", "Eco-Friendly Lifestyle", "Water Conservation Techniques", "Climate Change Awareness",
+  "Sustainable Transportation", "Recycling Fundamentals"
+];
+const optionsCheckbox = ["Lectures", "Resources", "Interactive videos", "Projects", "Others"];
 
 const FeedbackForm = () => {
   const [form, setForm] = useState({

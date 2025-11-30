@@ -2,7 +2,7 @@ import React from "react";
 import "./HeroSection.css";
 import heroImg from "../assets/eco-hero.png";
 
-function HeroSection({ onLogin, onSignup, isLoggedIn }) {
+function HeroSection({ onLogin, onSignup, isLoggedIn, userName, onLogout }) {
   return (
     <section className="hero-section">
       <div className="hero-text">
@@ -12,14 +12,22 @@ function HeroSection({ onLogin, onSignup, isLoggedIn }) {
           and eco-friendly projects.
         </p>
 
-        {/* Hide buttons if user is logged in */}
-        {!isLoggedIn && (
+        {!isLoggedIn ? (
           <div className="hero-buttons">
             <button onClick={onSignup} className="btn-primary">
               Sign Up
             </button>
             <button onClick={onLogin} className="btn-secondary">
               Log In
+            </button>
+          </div>
+        ) : (
+          <div className="hero-loggedin">
+            <span style={{ marginRight: "15px", fontWeight: "bold" }}>
+              Welcome, {userName}!
+            </span>
+            <button onClick={onLogout} className="btn-secondary">
+              Logout
             </button>
           </div>
         )}

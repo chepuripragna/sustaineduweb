@@ -31,6 +31,16 @@
   background-color: #388E3C;
 }
 */
+body {
+  background: linear-gradient(to right, #89f7fe, #66ffeb); /* light sky blue gradient */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
 .lesson-card {
   background: #f9f9f6;
   border-radius: 10px;

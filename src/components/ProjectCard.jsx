@@ -1,20 +1,12 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./ProjectCard.css";
 
-function ProjectCard({ title, description }) {
-  const navigate = useNavigate();
-
-  const handleJoin = () => {
-    const encodedTitle = encodeURIComponent(title);
-    navigate(`/projects/${encodedTitle}`);
-  };
-
+function ProjectCard({ title, description, onJoin }) {
   return (
     <div className="project-card">
       <h3>{title}</h3>
       <p>{description}</p>
-      <button className="join-btn" onClick={handleJoin}>
+      <button className="join-btn" onClick={onJoin}>
         Join Project
       </button>
     </div>
