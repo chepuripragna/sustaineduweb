@@ -1,12 +1,14 @@
-import React from "react";
-import { useParams, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 function ProjectDetails() {
   const { title } = useParams();
+  const loggedInUser = localStorage.getItem("loggedInUser");
+  const [joined, setJoined] = useState(false);
 
-  const projectInfo = {
+  const projectsData = {
     "Create a Compost Bin": {
       description: "Learn to make your own compost bin at home.",
       steps: [
@@ -14,107 +16,48 @@ function ProjectDetails() {
         "Prepare a container or build one from wood.",
         "Add organic waste like kitchen scraps, leaves, and grass.",
         "Turn the compost every week.",
-        "Use finished compost in your garden."
-      ]
+        "Use finished compost in your garden.",
+      ],
     },
     "Plastic-Free Week Challenge": {
       description: "Avoid plastic usage for one week and track results.",
       steps: [
-        "Identify common plastic items you use.",
+        "Identify common plastic items.",
         "Replace with reusable alternatives.",
         "Track your usage daily.",
-        "Share results with friends or community."
-      ]
+        "Share results with community.",
+      ],
     },
-    "Community Garden Project": {
-      description: "Join a local garden initiative and grow plants sustainably.",
-      steps: [
-        "Find a local community garden.",
-        "Sign up and attend an orientation.",
-        "Participate in planting and maintenance activities.",
-        "Harvest and enjoy the produce."
-      ]
-    },
-    "Rainwater Harvesting Setup": {
-      description: "Learn how to collect and store rainwater for household use.",
-      steps: [
-        "Select a suitable collection area.",
-        "Install storage tanks or barrels.",
-        "Filter debris and store water safely.",
-        "Use for gardening, cleaning, or household needs."
-      ]
-    },
-    "Zero-Waste Kitchen Challenge": {
-      description: "Reduce kitchen waste by adopting reusable containers, composting, and smart shopping.",
-      steps: [
-        "Identify single-use items in your kitchen.",
-        "Switch to reusable containers and wraps.",
-        "Compost food scraps.",
-        "Plan meals to reduce leftovers."
-      ]
-    },
-    "Tree Plantation Drive": {
-      description: "Join a local initiative to plant trees in your community or school.",
-      steps: [
-        "Locate areas suitable for planting.",
-        "Get saplings from local nurseries.",
-        "Plant trees with proper spacing.",
-        "Water and maintain the trees."
-      ]
-    },
-    "Upcycling Workshop": {
-      description: "Turn old items like jars, bottles, or clothes into useful products.",
-      steps: [
-        "Collect items to upcycle.",
-        "Learn basic crafting techniques.",
-        "Create functional or decorative items.",
-        "Share or gift your upcycled creations."
-      ]
-    },
-    "Neighborhood Cleanup": {
-      description: "Participate in cleaning local parks, streets, or riverbanks.",
-      steps: [
-        "Gather volunteers.",
-        "Plan a cleanup route.",
-        "Provide gloves and trash bags.",
-        "Collect and properly dispose of waste."
-      ]
-    },
-    "Eco-Friendly School Campaign": {
-      description: "Create awareness campaigns in your school for reducing plastic and conserving energy.",
-      steps: [
-        "Prepare posters and presentations.",
-        "Conduct workshops or seminars.",
-        "Encourage peers to adopt sustainable habits.",
-        "Monitor impact and celebrate success."
-      ]
-    },
-    "Community Composting Program": {
-      description: "Set up a composting system for your apartment or neighborhood.",
-      steps: [
-        "Identify a shared composting area.",
-        "Provide bins for organic waste.",
-        "Educate participants about composting.",
-        "Harvest compost regularly for community use."
-      ]
-    }
   };
 
-  const project = projectInfo[title];
+  // Load join status
+  useEffect(() => {
+    const saved = localStorage.getItem(`joined_${title}_${loggedInUser}`);
+    if (saved === "true") {
+      setJoined(true);
+    }
+  }, [title, loggedInUser]);
 
-  if (!project) {
-    return (
-      <>
-        <Navbar />
-        <div className="page-container">
-          <h2>Project not found</h2>
-          <Link to="/projects">
-            <button>Back to Projects</button>
-          </Link>
-        </div>
-        <Footer />
-      </>
-    );
+  // Handle join
+  const handleJoin = () => {
+    setJoined(true);
+
+    // Save join for this user
+    localStorage.setItem(`joined_${title}_${loggedInUser}`, "true");
+
+    // RECALCULATE completed projects (same logic as Lessons)
+    const allProjects = Object.keys(projectsData);
+    const completedCount = allProjects.filter(
+      (p) => localStorage.getItem(`joined_${p}_${loggedInUser}`) === "true"
+    ).length;
+
+    localStorage.setItem(`projectsCompleted_${loggedInUser}`, completedCount);
+
+    alert("Project joined!");
+  };
+
+  if (!projectsData[title]) {
+    return <h2>Project not found</h2>;
   }
 
   return (
@@ -122,16 +65,22 @@ function ProjectDetails() {
       <Navbar />
       <div className="page-container">
         <h2>{title}</h2>
-        <p>{project.description}</p>
+        <p>{projectsData[title].description}</p>
+
         <h3>Steps:</h3>
         <ul>
-          {project.steps.map((step, index) => (
-            <li key={index}>{step}</li>
+          {projectsData[title].steps.map((step, i) => (
+            <li key={i}>{step}</li>
           ))}
         </ul>
-        <Link to="/projects">
-          <button>Back to Projects</button>
-        </Link>
+
+        {!joined ? (
+          <button onClick={handleJoin} className="join-btn">
+            Join Project
+          </button>
+        ) : (
+          <p className="joined-text">You have joined this project</p>
+        )}
       </div>
       <Footer />
     </>

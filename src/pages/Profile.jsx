@@ -13,26 +13,25 @@ function Profile() {
   });
 
   useEffect(() => {
-    // Get the currently logged-in user
     const email = localStorage.getItem("loggedInUser");
+
     if (!email) {
-      // redirect to registration/login if not logged in
       window.location.href = "/register";
       return;
     }
 
-    // Fetch user info from localStorage
-    const name = localStorage.getItem("userName_" + email) || "";
-    const lessons = localStorage.getItem("lessonsCompleted_" + email) || 0;
-    const projects = localStorage.getItem("projectsCompleted_" + email) || 0;
-    const ecoGoals = localStorage.getItem("ecoGoals_" + email) || 0;
+    // Load all user data from localStorage
+    const name = localStorage.getItem(`userName_${email}`) || "";
+    const lessons = parseInt(localStorage.getItem(`lessonsCompleted_${email}`)) || 0;
+    const projects = parseInt(localStorage.getItem(`projectsCompleted_${email}`)) || 0;
+    const ecoGoals = parseInt(localStorage.getItem(`ecoGoals_${email}`)) || 0;
 
     setUser({
       name,
       email,
       lessonsCompleted: lessons,
       projectsCompleted: projects,
-      ecoGoals: ecoGoals,
+      ecoGoals,
     });
   }, []);
 
@@ -40,13 +39,16 @@ function Profile() {
     e.preventDefault();
     const email = user.email;
 
-    // Save updated info to localStorage
-    localStorage.setItem("userName_" + email, user.name);
-    localStorage.setItem("lessonsCompleted_" + email, user.lessonsCompleted);
-    localStorage.setItem("projectsCompleted_" + email, user.projectsCompleted);
-    localStorage.setItem("ecoGoals_" + email, user.ecoGoals);
+    // Save updated data
+    localStorage.setItem(`userName_${email}`, user.name);
+    localStorage.setItem(`lessonsCompleted_${email}`, user.lessonsCompleted);
+    localStorage.setItem(`projectsCompleted_${email}`, user.projectsCompleted);
+    localStorage.setItem(`ecoGoals_${email}`, user.ecoGoals);
 
     alert("Profile updated!");
+
+    // REFRESH UI instantly
+    setUser({ ...user });
   };
 
   return (
@@ -62,7 +64,7 @@ function Profile() {
             <p><strong>Email:</strong> {user.email}</p>
             <p><strong>Lessons Completed:</strong> {user.lessonsCompleted}</p>
             <p><strong>Projects Completed:</strong> {user.projectsCompleted}</p>
-            <p><strong>Eco Goals Progress:</strong> {user.ecoGoals}%</p>
+            <p><strong>Eco Goals Saved:</strong> {user.ecoGoals}</p>
           </div>
 
           <div className="edit-profile">
@@ -74,30 +76,36 @@ function Profile() {
                 value={user.name}
                 onChange={(e) => setUser({ ...user, name: e.target.value })}
               />
-              <input
-                type="email"
-                placeholder="Email"
-                value={user.email}
-                readOnly
-              />
+
+              <input type="email" value={user.email} readOnly />
+
               <input
                 type="number"
                 placeholder="Lessons Completed"
                 value={user.lessonsCompleted}
-                onChange={(e) => setUser({ ...user, lessonsCompleted: e.target.value })}
+                onChange={(e) =>
+                  setUser({ ...user, lessonsCompleted: parseInt(e.target.value) })
+                }
               />
+
               <input
                 type="number"
                 placeholder="Projects Completed"
                 value={user.projectsCompleted}
-                onChange={(e) => setUser({ ...user, projectsCompleted: e.target.value })}
+                onChange={(e) =>
+                  setUser({ ...user, projectsCompleted: parseInt(e.target.value) })
+                }
               />
+
               <input
                 type="number"
-                placeholder="Eco Goals %"
+                placeholder="Eco Goals"
                 value={user.ecoGoals}
-                onChange={(e) => setUser({ ...user, ecoGoals: e.target.value })}
+                onChange={(e) =>
+                  setUser({ ...user, ecoGoals: parseInt(e.target.value) })
+                }
               />
+
               <button type="submit">Save Changes</button>
             </form>
           </div>

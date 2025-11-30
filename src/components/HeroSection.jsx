@@ -26,9 +26,7 @@ function HeroSection({ onLogin, onSignup, isLoggedIn, userName, onLogout }) {
             <span style={{ marginRight: "15px", fontWeight: "bold" }}>
               Welcome, {userName}!
             </span>
-            <button onClick={onLogout} className="btn-secondary">
-              Logout
-            </button>
+           
           </div>
         )}
       </div>
